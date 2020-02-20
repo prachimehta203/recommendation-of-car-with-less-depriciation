@@ -1,0 +1,781 @@
+<?xml version="1.0"?>
+<AlteryxDocument yxmdVer="2019.3">
+  <Nodes>
+    <Node ToolID="1">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="25">C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`</File>
+          <FormatSpecificOptions>
+            <FirstRowData>False</FirstRowData>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Data1.xlsx
+Table=`Sheet1$`</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <Dependencies>
+          <Implicit />
+        </Dependencies>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="F1" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Year" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Month" size="255" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Make" size="255" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Model" size="255" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="Version" size="255" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="City" size="255" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="V_String" />
+            <Field name="No of Owners" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Kilometers" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Min_Value" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Max_Value" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="Original_Price" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="F13" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+            <Field name="F14" source="File: C:\Users\ojasa\Desktop\Data1.xlsx|||`Sheet1$`" type="Double" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="2">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Formula.Formula">
+        <Position x="198" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <FormulaFields>
+            <FormulaField expression="([Min_Value]+[Max_Value])/2" field="Average Value" size="4" type="Float" />
+            <FormulaField expression="[Original_Price]-[Average Value]" field="Depriciation(in rupess)" size="4" type="Float" />
+            <FormulaField expression="2020-[Year]" field="Cars Used(in years)" size="4" type="Float" />
+          </FormulaFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Average Value = ([Min_Value]+[Max_Value])/2
+Depriciation(in rupess) = [Original_...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxFormula" />
+    </Node>
+    <Node ToolID="3">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
+        <Position x="354" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>First</Mode>
+          <N>9</N>
+          <GroupFields orderChanged="False">
+            <Field name="Make" />
+          </GroupFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 9</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
+    </Node>
+    <Node ToolID="4">
+      <GuiSettings Plugin="PlotlyCharting">
+        <Position x="522" y="198" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ChartingFields>
+            <Traces>
+              <type>scatter</type>
+              <mode>lines</mode>
+              <xsrc>Cars Used(in years)</xsrc>
+              <ysrc>Depriciation(in rupess)</ysrc>
+              <line>
+                <width>2</width>
+              </line>
+            </Traces>
+            <Traces>
+              <type>scatter</type>
+              <mode>lines</mode>
+              <showlegend>false</showlegend>
+              <xsrc>Cars Used(in years)</xsrc>
+              <ysrc>Depriciation(in rupess)</ysrc>
+            </Traces>
+            <Layout>
+              <title>
+                <text>
+                </text>
+              </title>
+              <font>
+                <family>sans-serif</family>
+              </font>
+              <autosize>false</autosize>
+              <width>700</width>
+              <height>849</height>
+              <showlegend>true</showlegend>
+              <hovermode>closest</hovermode>
+              <xaxis>
+                <range>2</range>
+                <range>10</range>
+                <autorange>true</autorange>
+                <title>
+                  <text>Years Old</text>
+                </title>
+                <type>linear</type>
+              </xaxis>
+              <yaxis>
+                <range>60666.666666666642</range>
+                <range>1407333.3333333333</range>
+                <autorange>true</autorange>
+                <title>
+                  <text>Depriciation</text>
+                </title>
+                <type>linear</type>
+              </yaxis>
+            </Layout>
+            <Batch>
+              <ColumnsToBatchBy json:Array="true" xmlns:json="http://james.newtonking.com/projects/json">Make</ColumnsToBatchBy>
+              <TemplateString>@[Make](Make)</TemplateString>
+            </Batch>
+          </ChartingFields>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="ComposerInteractiveCharting" />
+    </Node>
+    <Node ToolID="5">
+      <GuiSettings>
+        <Position x="714" y="306" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Value name="HeaderText">Car Sales</Value>
+          <Value name="IncludeDate">True</Value>
+          <Value name="DateFormat">dd-MM-yyyy</Value>
+          <Value name="IncludeImage">True</Value>
+          <Value name="AlteryxLogo">True</Value>
+          <Value name="OwnLogo">False</Value>
+          <Value name="ImageFile" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings Macro="HeaderMacro.yxmc" />
+    </Node>
+    <Node ToolID="7">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="630" y="246" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\ojasa\AppData\Local\Temp\Engine_13744_e9d1bae09cb641c39401ea5addcfaccf_\Engine_25960_9424a274f34842c2a5c5ac69a5b9f11f_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="8">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="618" y="306" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <Output>Text</Output>
+          <HeaderMode value="False" />
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Microsoft YaHei UI;}}
+{\colortbl ;\red0\green0\blue0;}
+\viewkind4\uc1\pard\cf1\b\f0\fs24 Computing depreciation in car prices with different makes\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" BackColor="#ffffff" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Computing depreciation in car ...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="9">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerRender.PortfolioComposerRender">
+        <Position x="1062" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFileType />
+          <OutputFile>C:\Users\ojasa\IdeaProjects\Project\Final_Report.pdf</OutputFile>
+          <BatchMode value="False" />
+          <DataField>Layout</DataField>
+          <Separator>Whitespace</Separator>
+          <EmbedDependencies value="False" />
+          <ShowHeader value="False" />
+          <ShowFooter value="False" />
+          <PortraitMode value="True" />
+          <PaperType Width="792" Height="1224" Left="36" Right="36" Top="36" Bottom="36" />
+          <DefaultStyles>
+            <Style Name="TextStyle" FontName="Arial" FontSize="14" Justify="Left" ForeColor="#000000" Locale="1033" />
+          </DefaultStyles>
+          <PNGResolution>1</PNGResolution>
+          <PNGLargerAction>squeeze</PNGLargerAction>
+          <PNGLargerThanPageChoice>warning</PNGLargerThanPageChoice>
+          <PNGTransparentBG value="False" />
+          <PNGBackColor value="#ffffff" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerRenderPlugin" />
+    </Node>
+    <Node ToolID="10">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Union.Union">
+        <Position x="810" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <ByName_ErrorMode>Warning</ByName_ErrorMode>
+          <ByName_OutputMode>All</ByName_OutputMode>
+          <Mode>ByName</Mode>
+          <SetOutputOrder value="True" />
+          <OutputOrder>
+            <Connection>#1</Connection>
+            <Connection>#3</Connection>
+            <Connection>#4</Connection>
+            <Connection>#2</Connection>
+          </OutputOrder>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxUnion" />
+    </Node>
+    <Node ToolID="11">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="486" y="258" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\ojasa\AppData\Local\Temp\Engine_13744_e9d1bae09cb641c39401ea5addcfaccf_\Engine_25960_749225b147ef460b9d67b05500420ee5_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="12">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="294" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\ojasa\AppData\Local\Temp\Engine_13744_e9d1bae09cb641c39401ea5addcfaccf_\Engine_25960_5494818785ad49eb97165b39cec4f13b_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="13">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerLayout.PortfolioComposerLayout">
+        <Position x="930" y="138" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <GroupingMode>PerRecord</GroupingMode>
+          <PreserveSourceFields value="False" />
+          <Orientation>V</Orientation>
+          <Separator>Continuous</Separator>
+          <Width>80%</Width>
+          <Height />
+          <BorderStyle Enabled="false" Color="#000000" Width="2" />
+          <SeparatorStyle Enabled="false" Color="#000000" Width="1" />
+          <Padding>0</Padding>
+          <LayoutFields orderChanged="True">
+            <Field name="Header" selected="True" Width="" Alignment="Center" />
+            <Field name="Text" selected="True" Width="" Alignment="Center" />
+            <Field name="Chart" selected="True" Alignment="Center" Width="" />
+            <Field name="Table" selected="True" Alignment="Left" Width="" />
+          </LayoutFields>
+          <MergeIntoTable value="False" />
+          <SectionNameForGroup />
+          <SectionNameForAllRecords />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Vertical Layout
+Each Individual Record</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerLayoutPlugin" />
+    </Node>
+    <Node ToolID="14">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.DbFileInput.DbFileInput">
+        <Position x="54" y="126" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Passwords />
+          <File OutputFileName="" RecordLimit="" SearchSubDirs="False" FileFormat="0">C:\Users\ojasa\IdeaProjects\Project\Data1.csv</File>
+          <FormatSpecificOptions>
+            <CodePage>28591</CodePage>
+            <Delimeter>,</Delimeter>
+            <IgnoreErrors>False</IgnoreErrors>
+            <FieldLen>254</FieldLen>
+            <AllowShareWrite>False</AllowShareWrite>
+            <HeaderRow>True</HeaderRow>
+            <IgnoreQuotes>DoubleQuotes</IgnoreQuotes>
+            <ImportLine>1</ImportLine>
+          </FormatSpecificOptions>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Data1.csv</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+        <MetaInfo connection="Output">
+          <RecordInfo>
+            <Field name="Field_1" size="254" source="File: C:\Users\ojasa\IdeaProjects\Project\Data1.csv" type="V_String" />
+            <Field name="Year" size="254" source="File: C:\Users\ojasa\IdeaProjects\Project\Data1.csv" type="V_String" />
+            <Field name="Brand" size="254" source="File: C:\Users\ojasa\IdeaProjects\Project\Data1.csv" type="V_String" />
+            <Field name="Minimum Depreciation" size="254" source="File: C:\Users\ojasa\IdeaProjects\Project\Data1.csv" type="V_String" />
+          </RecordInfo>
+        </MetaInfo>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxDbFileInput" />
+    </Node>
+    <Node ToolID="16">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerTable.PortfolioComposerTable">
+        <Position x="330" y="30" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TableMode>Basic</TableMode>
+          <GroupingFields orderChanged="False">
+            <Field name="Year" />
+            <Field name="Brand" />
+            <Field name="Minimum Depreciation" />
+          </GroupingFields>
+          <Width>100%</Width>
+          <ShowHeader value="True" />
+          <ShowBarGraph value="False" />
+          <TableFields orderChanged="False">
+            <Field name="Year" selected="True" Alignment="Left" Borders="Left" />
+            <Field name="Brand" selected="True" Alignment="Center" Borders="Both" />
+            <Field name="Minimum Depreciation" selected="True" Alignment="Right" Borders="Right" Width="" />
+            <Field name="Field_1" selected="False" />
+            <Field name="*Unknown" selected="False" />
+          </TableFields>
+          <TableStyles>
+            <Style Name="Data" Font="Arial" Size="8" TextColor="#000000" BackColor="#ffffff" AltColor="#f0f0f0" RowGroup="1" />
+            <Style Name="Header" Font="Arial" Size="10" TextColor="#000000" BackColor="#dbdbdb" />
+            <Style Name="Borders" Width="1" DataColor="#000000" HeaderColor="#000000" RowBorder="None" BasicColBorder="Default (Use Per Column Setting)" />
+            <Style Name="Table" CellPadding="0" ColumnPadding="0" TableBorder="true" Width="1" BorderColor="#000000" />
+          </TableStyles>
+          <StyleRules>
+            <Rule Name="f53e70de-8e26-4b49-9592-7811a35e7c7d">
+              <RowRule value="False" />
+              <HighPrecedence value="False" />
+              <Field>Year</Field>
+              <Test>Always</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>1</SimpleConst>
+              <Formula>1</Formula>
+              <Style Font="--Gadugi" TextColor="#000000" BackColor="#ff8080" />
+              <PrettyName>Year Rule 1</PrettyName>
+            </Rule>
+            <Rule Name="a15b5d80-4cab-4cde-b2fe-e223d98ebcba">
+              <RowRule value="False" />
+              <HighPrecedence value="False" />
+              <Field>Minimum Depreciation</Field>
+              <Test>Always</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>1</SimpleConst>
+              <Formula>1</Formula>
+              <Style Font="--Gadugi" TextColor="#000000" BackColor="#ff8080" />
+              <PrettyName>Minimum Depreciation Rule 1</PrettyName>
+            </Rule>
+            <Rule Name="fdbdc96c-d873-4691-aea9-0089c98f5ce6">
+              <RowRule value="True" />
+              <HighPrecedence value="False" />
+              <Field />
+              <Test>Always</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>1</SimpleConst>
+              <Formula>1</Formula>
+              <Style />
+              <PrettyName>Row Rule 1</PrettyName>
+            </Rule>
+            <Rule Name="115758b4-76ef-43c6-adbb-2558d89d8f68">
+              <RowRule value="False" />
+              <HighPrecedence value="False" />
+              <Field>Brand</Field>
+              <Test>Always</Test>
+              <ApplyTo>Data</ApplyTo>
+              <SimpleVar />
+              <SimpleOp>==</SimpleOp>
+              <SimpleConst>1</SimpleConst>
+              <Formula>1</Formula>
+              <Style Font="--Gadugi" TextColor="#000000" BackColor="#ff8080" />
+              <PrettyName>Brand Rule 1</PrettyName>
+            </Rule>
+          </StyleRules>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Basic Table</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTablePlugin" />
+    </Node>
+    <Node ToolID="17">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="174" y="54" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\ojasa\AppData\Local\Temp\Engine_13744_e9d1bae09cb641c39401ea5addcfaccf_\Engine_25960_c3b948fe0e3046299b431c8939add0fd_.yxdb</TempFile>
+          <Layout>
+            <View1>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="18">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="510" y="-6" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\ojasa\AppData\Local\Temp\Engine_13744_e9d1bae09cb641c39401ea5addcfaccf_\Engine_25960_1f75ac2fc9ff4d288ad7b530da7d1e75_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Report</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+    <Node ToolID="19">
+      <GuiSettings Plugin="PortfolioPluginsGui.ComposerText.PortfolioComposerText">
+        <Position x="450" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Images />
+          <Output>Text</Output>
+          <HeaderMode value="False" />
+          <RawMode value="False" />
+          <ValidatePCXML value="True" />
+          <Message />
+          <RichTextMode value="True" />
+          <RichTextString><![CDATA[{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Arial;}}
+{\colortbl ;\red0\green128\blue0;}
+\viewkind4\uc1\pard\cf1\b\fs24 Table for Minimum of Depreciation\par
+}
+]]></RichTextString>
+          <Styles>
+            <Style Name="TextStyle" />
+          </Styles>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>Table for Minimum of Depreciat...</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="PortfolioPluginsEngine.dll" EngineDllEntryPoint="AlteryxPortfolioComposerTextPlugin" />
+    </Node>
+    <Node ToolID="20">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
+        <Position x="810" y="306" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>First</Mode>
+          <N>1</N>
+          <GroupFields orderChanged="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 1</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
+    </Node>
+    <Node ToolID="21">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.Sample.Sample">
+        <Position x="534" y="66" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <Mode>First</Mode>
+          <N>1</N>
+          <GroupFields orderChanged="False" />
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText>First 1</DefaultAnnotationText>
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxSample" />
+    </Node>
+    <Node ToolID="22">
+      <GuiSettings Plugin="AlteryxBasePluginsGui.BrowseV2.BrowseV2">
+        <Position x="138" y="270" />
+      </GuiSettings>
+      <Properties>
+        <Configuration>
+          <TempFile>C:\Users\ojasa\AppData\Local\Temp\Engine_13744_e9d1bae09cb641c39401ea5addcfaccf_\Engine_25960_6daf927d30834a9eac12cb1dfb5db4cc_.yxdb</TempFile>
+          <TempFileDataProfiling />
+          <Layout>
+            <ViewMode>Single</ViewMode>
+            <ViewSize value="100" />
+            <View1>
+              <DefaultTab>Profile</DefaultTab>
+              <Hints>
+                <Table />
+              </Hints>
+            </View1>
+            <View2 />
+          </Layout>
+        </Configuration>
+        <Annotation DisplayMode="0">
+          <Name />
+          <DefaultAnnotationText />
+          <Left value="False" />
+        </Annotation>
+      </Properties>
+      <EngineSettings EngineDll="AlteryxBasePluginsEngine.dll" EngineDllEntryPoint="AlteryxBrowseV2" />
+    </Node>
+  </Nodes>
+  <Connections>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="2" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="1" Connection="Output" />
+      <Destination ToolID="22" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="3" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="2" Connection="Output" />
+      <Destination ToolID="12" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="11" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="4" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="3" Connection="Output" />
+      <Destination ToolID="8" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="7" Connection="Input" />
+    </Connection>
+    <Connection name="#3">
+      <Origin ToolID="4" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection name="#2">
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection name="#1">
+      <Origin ToolID="20" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection name="#4">
+      <Origin ToolID="21" Connection="Output" />
+      <Destination ToolID="10" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="5" Connection="Output13" />
+      <Destination ToolID="20" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="8" Connection="Output" />
+      <Destination ToolID="5" Connection="Report Layout" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="10" Connection="Output" />
+      <Destination ToolID="13" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="13" Connection="Output" />
+      <Destination ToolID="9" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="17" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="14" Connection="Output" />
+      <Destination ToolID="16" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="18" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="16" Connection="Output" />
+      <Destination ToolID="19" Connection="Input" />
+    </Connection>
+    <Connection>
+      <Origin ToolID="19" Connection="Output" />
+      <Destination ToolID="21" Connection="Input" />
+    </Connection>
+  </Connections>
+  <Properties>
+    <Memory default="True" />
+    <GlobalRecordLimit value="0" />
+    <TempFiles default="True" />
+    <Annotation on="True" includeToolName="False" />
+    <ConvErrorLimit value="10" />
+    <ConvErrorLimit_Stop value="False" />
+    <CancelOnError value="False" />
+    <DisableBrowse value="False" />
+    <EnablePerformanceProfiling value="False" />
+    <DisableAllOutput value="False" />
+    <ShowAllMacroMessages value="False" />
+    <ShowConnectionStatusIsOn value="True" />
+    <ShowConnectionStatusOnlyWhenRunning value="True" />
+    <ZoomLevel value="0" />
+    <LayoutType>Horizontal</LayoutType>
+    <MetaInfo>
+      <NameIsFileName value="True" />
+      <Name>Project</Name>
+      <Description />
+      <RootToolName />
+      <ToolVersion />
+      <ToolInDb value="False" />
+      <CategoryName />
+      <SearchTags />
+      <Author />
+      <Company />
+      <Copyright />
+      <DescriptionLink actual="" displayed="" />
+      <Example>
+        <Description />
+        <File />
+      </Example>
+    </MetaInfo>
+    <Events>
+      <Enabled value="True" />
+    </Events>
+  </Properties>
+</AlteryxDocument>
